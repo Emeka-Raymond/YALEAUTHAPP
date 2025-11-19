@@ -6,10 +6,9 @@ from django.contrib.auth.models import User
 # from django.dispatch import receiver    
 
 # Create your models here.
-GENDER = (
-    ('Male', 'Male')
+GENDER_CHOICES = (
+    ('Male', 'Male'),
     ('Female', 'Female'),
-
 )
 
 class Profile(models.Model):
@@ -17,7 +16,7 @@ class Profile(models.Model):
     fullname = models.CharField(max_length=50)
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField()
-    gender = models.CharField(max_length=6, choices=GENDER)
+    gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
     phone = models.CharField(max_length=12)
     photo = models.ImageField(upload_to="profile", default="https://randomuser.me/api/portraits/men/83.jpg",
     null=True, blank=True)
